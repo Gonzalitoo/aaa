@@ -13,7 +13,16 @@ val jar by tasks.getting(Jar::class) {
     manifest {
         attributes["Main-Class"] = "aplicacion.DifficultAppKt"
     }
-    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    // To avoid the duplicate handling strategy error
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    // To add all of the dependencies
+    from(sourceSets.main.get().output)
+
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
 }
 
 application {
