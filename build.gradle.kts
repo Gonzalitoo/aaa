@@ -13,6 +13,7 @@ val jar by tasks.getting(Jar::class) {
     manifest {
         attributes["Main-Class"] = "aplicacion.DifficultAppKt"
     }
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 application {
