@@ -1,0 +1,94 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+###########################################
+GET http://{{host}}/productos
+
+###########################################
+1 - Simple #################################################################
+###########################################  Todos
+GET http://{{host}}/productos/busqueda
+
+###########################################
+2 - Simple 0 ###############################################################
+########################################### Solo dos
+GET http://{{host}}/productos/busqueda
+    ?nombre=Ca
+
+3 - Simple 1 ###############################################################
+########################################### Solo 3
+GET http://{{host}}/productos/busqueda
+    ?puntaje=5
+
+4 - Simple 2 ###############################################################
+########################################### Solo 1
+GET http://{{host}}/productos/busqueda
+    ?paisDeOrigen=China
+
+5 - Doble #################################################################
+########################################### Solo tres
+GET http://{{host}}/productos/busqueda
+    ?puntaje=4
+
+###########################################
+// con puntaje 4 hay 5, pero solo 2 contienen con i
+GET http://{{host}}/productos/busqueda
+    ?nombre=i
+    &puntaje=4
+
+6 - Doble #################################################################
+########################################### Solo tres
+GET http://{{host}}/productos/busqueda
+    ?puntaje=3
+
+###########################################
+// con puntaje 5 hay tres, pero solo uno con Brasil y dos
+// con argentina
+GET http://{{host}}/productos/busqueda
+    ?puntaje=5
+    &paisDeOrigen=Argentina
+
+###########################################
+// con puntaje 2 hay tres, pero solo uno con Alemania y dos
+// con argentina
+GET http://{{host}}/productos/busqueda
+    ?puntaje=2
+    &paisDeOrigen=Brasil
+
+7 - Doble #################################################################
+###########################################
+GET http://{{host}}/productos/busqueda
+    ?paisDeOrigen=Argentina
+
+###########################################
+// con pais Argentina hay catorce, pero con nombre x solo
+// hay dos
+GET http://{{host}}/productos/busqueda
+    ?nombre=x
+    &paisDeOrigen=Argentina
+
+8 - Triple ################################################################
+###########################################
+GET http://{{host}}/productos/busqueda
+    ?puntaje=3
+    &paisDeOrigen=Argentina
+
+###########################################
+// con pais Argentina y puntaje 3 hay tres, pero solo dos
+// continen la letra r 
+GET http://{{host}}/productos/busqueda
+    ?nombre=lb
+    &puntaje=3
+    &paisDeOrigen=Argentina
+
+###########################################
+GET http://{{host}}/productos/barraBusqueda
+
+###########################################
+GET http://{{host}}/productos/barraBusqueda
+    ?nombre=c
+
+###########################################
+GET http://{{host}}/productos/barraBusqueda
+    ?nombre=Ca

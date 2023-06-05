@@ -1,0 +1,24 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+###########################################
+GET http://{{host}}/productos
+
+###########################################
+// producto simple - piso
+GET http://{{host}}/producto
+    ?productoId=2
+
+###########################################
+// producto simple - piso
+GET http://{{host}}/producto
+    ?productoId=1000
+
+###########################################
+// con pais Argentina y puntaje 3 hay tres, pero solo dos
+// continen la letra r 
+GET http://{{host}}/productos/busqueda
+    ?nombre=GG
+    &puntaje=55
+    &paisDeOrigen=Nigeria

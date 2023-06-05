@@ -1,0 +1,55 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+###########################################
+// agrego 10 Cerámica de interior, Cañuelas del lote 8414
+POST http://{{host}}/carrito/agregarItem?id=1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "productoId": 10,
+    "loteId": 100,
+    "cantidad": 10
+}
+
+###########################################
+// agrego 10 Látex interior / exterior Mate, Pro 720 del lote 4121
+POST http://{{host}}/carrito/agregarItem?id=1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "productoId": 10,
+    "loteId": 4121,
+    "cantidad": 10,
+    "descripcion": "Látex interior / exterior Mate"
+}
+
+###########################################
+GET http://{{host}}/carrito/items?id=1 HTTP/1.1
+
+###########################################
+POST http://{{host}}/carrito/comprar?id=1
+
+###########################################
+GET http://{{host}}/usuario?id=1 HTTP/1.1
+
+###########################################
+PUT http://{{host}}/editarUsuario?id=1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Bonifacio",
+    "apellido": "Gomez",
+    "saldo": 10000000000000000
+}
+
+###########################################
+// producto simple - piso
+// 8414 tienen 125 luego tiene 115 
+GET http://{{host}}/producto?productoId=10
+
+###########################################
+// producto simple - pintura
+//el 4221 tiene 217 luego 207   
+GET http://{{host}}/producto?productoId=17

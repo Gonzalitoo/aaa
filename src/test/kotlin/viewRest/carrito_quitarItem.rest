@@ -1,0 +1,41 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+###########################################
+POST http://{{host}}/carrito/agregarItem?id=1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "productoId": 0,
+    "loteId": 8414,
+    "cantidad": 10
+}
+
+###########################################
+POST http://{{host}}/carrito/agregarItem?id=1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "productoId": 10,
+    "loteId": 4121,
+    "cantidad": 10,
+    "precio": 83750.625
+}
+
+###########################################
+DELETE http://{{host}}/carrito/quitarItem HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+itemId=1&id=1
+
+###########################################
+DELETE http://{{host}}/carrito/quitarItem HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+itemId=2&id=1
+
+###########################################
+GET http://{{host}}/carrito/items?id=1 HTTP/1.1
+
+###########################################

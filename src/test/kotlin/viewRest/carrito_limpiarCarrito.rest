@@ -1,0 +1,40 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+###########################################
+POST http://{{host}}/carrito/agregarItem?id=1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "productoId": 1,
+    "loteId": 1,
+    "cantidad": 10,
+    "precio": 10.00
+
+}
+
+###########################################
+POST http://{{host}}/carrito/agregarItem?id=1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 2,
+    "productoId": 2,
+    "loteId": 2,
+    "cantidad": 10,
+    "precio": 10.00
+
+}
+
+###########################################
+DELETE http://{{host}}/carrito/limpiarCarrito HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+id=1
+
+###########################################
+GET http://{{host}}/carrito/items?id=1 HTTP/1.1
+
+###########################################

@@ -1,0 +1,66 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+###########################################
+POST http://{{host}}/usuario HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 2000,
+    "usuarioNombre": "CachitoGonzales",
+    "contrasenia": "1234",
+    "imagen": "aweqwe",
+    "nombre": "cachito",
+    "apellido": "gonzales",
+    "edad": 99,
+    "saldo": 1000000.0
+}
+
+###########################################
+// HTTP/1.1 200 
+GET http://{{host}}/usuario?id=1 HTTP/1.1
+
+###########################################
+// HTTP/1.1 400 
+GET http://{{host}}/usuario?id=10 HTTP/1.1
+
+###########################################
+// HTTP/1.1 400 
+GET http://{{host}}/usuario HTTP/1.1
+
+##########################################
+PUT http://{{host}}/usuario HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+usuario=Bonifacio&contrasenia=1234
+
+##########################################
+PUT http://{{host}}/usuario HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+usuario=Clemente&contrasenia=5555
+
+##########################################
+PUT http://{{host}}/usuario HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###########################################
+PUT http://{{host}}/editarUsuario?id=1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Bonifacio",
+    "apellido": "Gomez",
+    "saldo": 100.0
+}
+
+//{
+//    "usuarioNombre": "CachitoGonzales",
+//    "contrasenia": "1234",
+//    "imagen": "aweqwe",
+//    "nombre": "cachito",
+//    "apellido": "gonzales",
+//    "edad": 99,
+//    "saldo": 1000000.0
+//}

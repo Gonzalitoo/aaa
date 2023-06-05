@@ -1,0 +1,39 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+###########################################
+GET http://{{host}}/productos
+
+###########################################
+GET http://{{host}}/productos?page=1&limit=5
+
+###########################################
+GET http://{{host}}/productos?page=2&limit=5
+
+###########################################
+GET http://{{host}}/productos?page=3&limit=5
+
+###########################################
+GET http://{{host}}/productos?page=4&limit=5
+
+###########################################
+GET http://{{host}}/productos?page=5&limit=5
+
+###########################################
+GET http://{{host}}/productos?page=0&limit=5
+
+###########################################
+// producto simple - piso
+GET http://{{host}}/producto
+    ?productoId=2
+
+###########################################
+// producto simple - pintura
+GET http://{{host}}/producto
+    ?productoId=10
+
+###########################################
+// producto simple - combo
+GET http://{{host}}/producto
+    ?productoId=17

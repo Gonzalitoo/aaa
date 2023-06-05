@@ -1,0 +1,53 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+###########################################
+// este no deberia existir
+GET http://{{host}}/usuarios HTTP/1.1
+
+###########################################
+GET http://{{host}}/usuario/perfil/11 HTTP/1.1
+
+###########################################
+PUT http://{{host}}/usuario/ingresar HTTP/1.1
+Content-Type: application/json
+
+{
+    "usuarioNombre": "Bonifacio0",
+    "contrasenia": "1234"
+}
+
+###########################################
+POST http://{{host}}/usuario/registrar HTTP/1.1
+Content-Type: application/json
+
+{
+    "usuarioNombre": "CachitoGonzales"
+    "usuarioNombre": "",
+    "contrasenia": "1234",
+    "imagen": "aweqwe",
+    "nombre": "cachito",
+    "apellido": "gonzales",
+    "edad": 99,
+    "saldo": 1000000.0
+}
+
+###########################################
+{
+    "usuarioNombre": "CachitoGonzales",
+    "contrasenia": "1234",
+    "imagen": "aweqwe",
+    "nombre": "cachito",
+    "apellido": "gonzales",
+    "edad": 99,
+    "saldo": 1000000.0
+}
+
+###########################################
+PUT http://{{host}}/usuario/perfil/1/editar HTTP/1.1
+Content-Type: application/json
+
+{
+    "saldo": 999999999
+}
